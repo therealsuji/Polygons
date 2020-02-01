@@ -9,8 +9,7 @@ public class playerAim : MonoBehaviour
     public Transform spawnPoint;
     float fireRate = 0.5f;
     private float lastShot = 0.0f;
-
-    private float health;
+    private float health = 100f;
 
     void Start()
     {
@@ -34,7 +33,8 @@ public class playerAim : MonoBehaviour
             {
                 FireProjectile(spawnPoint.position, projectilePrefab);
                 lastShot = Time.time;
-                GameManager.instance.setHealthBar(0.5f);
+                health -= 5;    
+                GameManager.instance.setHealthBar(health/100);
             }
         }
     }
