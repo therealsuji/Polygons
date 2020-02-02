@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    private GameObject player;
+    public  GameObject player;
 
     public  Image healthBar;
     void Awake()
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
 
     }
 

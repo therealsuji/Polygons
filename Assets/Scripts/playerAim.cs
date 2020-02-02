@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ public class playerAim : MonoBehaviour
     public Transform spawnPoint;
     float fireRate = 0.5f;
     private float lastShot = 0.0f;
-
-    private float health;
+    private float health = 100f;
 
     void Start()
     {
@@ -34,18 +34,21 @@ public class playerAim : MonoBehaviour
             {
                 FireProjectile(spawnPoint.position, projectilePrefab);
                 lastShot = Time.time;
-                GameManager.instance.setHealthBar(0.5f);
+                setHealth(5);
             }
         }
     }
 
-
+    public void setHealth(float value)
+    {
+        health -= value;
+        GameManager.instance.setHealthBar(health / 100);
+        Debug.Log(health);
+    }
 
     void FireProjectile(Vector3 spawnPoint, GameObject projectileObj)
     {
         GameObject projectile = Instantiate(projectileObj, spawnPoint, Quaternion.identity);
         projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 100, ForceMode.Impulse);
     }
-
-
 }
