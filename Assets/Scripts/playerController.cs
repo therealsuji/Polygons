@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
     void movePlayer()
     {
         Vector3 joystickDirection = new Vector3(joystick.Horizontal, joystick.Vertical, 0);
-        if (joystickDirection.sqrMagnitude > 0.05)
+        if (joystickDirection.sqrMagnitude > 0.05  && !GameManager.instance.player.GetComponent<playerAim>().dead)
         {
             float angle = Mathf.Atan2(joystickDirection.x, joystickDirection.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, angle, 0)), Time.deltaTime * turnSpeed);

@@ -7,6 +7,8 @@ TagManager:
   - JoyStickAim
   - JoyStickMovement
   - projectile
+  - enemy
+  - shard
   layers:
   - Default
   - TransparentFX
